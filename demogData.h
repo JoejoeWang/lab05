@@ -76,9 +76,9 @@ class demogData : public regionData {
       popOver65 = 100*((popOver65*this->totalPopulation2014/100)+(a.popOver65*a.totalPopulation2014/100))/(this->totalPopulation2014+a.totalPopulation2014);
       popUnder18 = 100*((this->popUnder18*this->totalPopulation2014/100)+(a.popUnder18*a.totalPopulation2014/100))/(this->totalPopulation2014+a.totalPopulation2014);
       popUnder5 = 100*((this->popUnder5*this->totalPopulation2014/100)+(a.popUnder5*a.totalPopulation2014/100))/(this->totalPopulation2014+a.totalPopulation2014); 
-      popBAup = 100*((this->popBAup*this->totalPopulation2014/100)+(a.popBAup*a.totalPopulation2014))/(this->totalPopulation2014+a.totalPopulation2014);
-      popHSup = 100*((this->popHSup*this->totalPopulation2014/100)+(a.popHSup*a.totalPopulation2014))/(this->totalPopulation2014+a.totalPopulation2014);
-      poverty = 100*((this->poverty*this->totalPopulation2014/100)+(a.poverty*a.totalPopulation2014))/(this->totalPopulation2014+a.totalPopulation2014);
+      popBAup = 100*((this->popBAup*this->totalPopulation2014/100)+(a.popBAup*a.totalPopulation2014/100))/(this->totalPopulation2014+a.totalPopulation2014);
+      popHSup = 100*((this->popHSup*this->totalPopulation2014/100)+(a.popHSup*a.totalPopulation2014/100))/(this->totalPopulation2014+a.totalPopulation2014);
+      poverty = 100*((this->poverty*this->totalPopulation2014/100)+(a.poverty*a.totalPopulation2014/100))/(this->totalPopulation2014+a.totalPopulation2014);
       totalPopulation2014 += a.totalPopulation2014;
       race += a.race;
     }
