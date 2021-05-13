@@ -158,8 +158,8 @@ void dataAQ::reportTopTenStatesPS() {
     cout << psPop[i]->getNumberOfCases() <<endl;
     cout << "Percent below poverty: ";
     cout << setprecision(2) << fixed;
-    cout << (double)(allComboDemogData[psPop[i]->getState()]->getPovertyCount())/allComboDemogData[psPop[i]->getState()]->getPop();
-    //cout << allComboDemogData[psPop[i]->getState()]->getPoverty();
+    //cout << (double)(allComboDemogData[psPop[i]->getState()]->getPovertyCount())/allComboDemogData[psPop[i]->getState()]->getPop();
+    cout << allComboDemogData[psPop[i]->getState()]->getPoverty();
     cout << "\n";
   }
 }
@@ -202,7 +202,7 @@ void dataAQ::reportTopTenStatesBP() {
     cout << dePop[i]->getPop();
     cout << "\nPercent below poverty: ";
     cout << setprecision(2) << fixed;
-    cout << (double)(dePop[i]->getPovertyCount())/dePop[i]->getPop();
+    cout << dePop[i]->getPoverty();
     cout << "\nPolice shooting incidents: ";
     cout << allComboPoliceData[dePop[i]->getState()]->getNumberOfCases();
     cout << "\n";
