@@ -125,13 +125,88 @@ void dataAQ::createComboPoliceData(std::vector<shared_ptr<psData> >& theData) {
 //sort and report the top ten states in terms of number of police shootings 
 void dataAQ::reportTopTenStatesPS() {
   //fill in
+  shared_ptr<psCombo> max;
+  shared_ptr<psCombo> a;
+  vector<shared_ptr<psCombo>> psPop;
+  for(auto entry : allComboPoliceData)
+  {
+    psPop.push_back(entry.second);
+  }
+  for(int i=0;i<psPop.size();i++)
+  {
+    int p(i),q;
+    a = psPop[i];
+    max = psPop[i];
+    for(int j=i+1;j<psPop.size();j++)
+    {
+      if(psPop[j]->getNumberOfCases()>max->getNumberOfCases())
+      {
+        max = psPop[j];
+        q = j;
+      }
+    }
+    psPop[i] = max;
+    psPop[q] = a;
+  }
+  cout << "Top ten states sorted on Below Poverty data & the associated police shooting data:\n";
+  for(int i=0;i<9;i++)
+  {
+    cout << psPop[i]->getState();
+    cout << "\nTotal population: ";
+    cout << allComboDemogData[psPop[i]->getState()]->getPop();
+    cout << "\nPolice shooting incidents: ";
+    cout << psPop[i]->getNumberOfCases() <<endl;
+    cout << "Percent below poverty: ";
+    cout << setprecision(2) << fixed;
+    cout << (double)(allComboDemogData[psPop[i]->getState()]->getPovertyCount())/allComboDemogData[psPop[i]->getState()]->getPop();
+    //cout << allComboDemogData[psPop[i]->getState()]->getPoverty();
+    cout << "\n";
+  }
 }
 
 
     //sort and report the top ten states with largest population below poverty 
 void dataAQ::reportTopTenStatesBP() {
 //fill in
-
+  shared_ptr<demogCombo> max;
+  shared_ptr<demogCombo> a;
+  vector<shared_ptr<demogCombo>> dePop;
+  for(auto entry : allComboDemogData)
+  {
+    dePop.push_back(entry.second);
+    //cout << entry.second->getPop()<<endl;
+  }
+  for(int i=0;i<dePop.size();i++)
+  {
+    int q;
+    a = dePop[i];
+    max = dePop[i];
+    for(int j=i+1;j<dePop.size();j++)
+    {
+      double percent1 = 100.0f*dePop[j]->getPovertyCount()/dePop[j]->getPop();
+      double percent2 = 100.0f*max->getPovertyCount()/max->getPop();
+      if(percent1>percent2)
+      {
+        max = dePop[j];
+        q = j;
+      }
+    }
+    dePop[i] = max;
+    dePop[q] = a;
+  }
+  for(int i=0;i<9;i++)
+  {
+    //cout << "Top ten states sorted on Below Poverty data & the associated police shooting data:\n";
+    cout << dePop[i]->getState();
+    cout << "\nTotal population: ";
+    cout << dePop[i]->getPop();
+    cout << "\nPercent below poverty: ";
+    cout << setprecision(2) << fixed;
+    cout << (double)(dePop[i]->getPovertyCount())/dePop[i]->getPop();
+    cout << "\nPolice shooting incidents: ";
+    cout << allComboPoliceData[dePop[i]->getState()]->getNumberOfCases();
+    cout << "\n";
+  }
 }
 
 /* print all combo data */
